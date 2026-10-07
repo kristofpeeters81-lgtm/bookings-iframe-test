@@ -1,6 +1,6 @@
 # bookings-iframe-test
 
-Testpagina om te controleren of de Microsoft Bookings-pagina van SamanthaPeeters2@conaction.be in een iframe ingesloten kan worden.
+Testpagina om te controleren of de Microsoft Bookings-pagina van afspraken@samanthapeeters.be in een iframe ingesloten kan worden.
 
 Live: https://kristofpeeters81-lgtm.github.io/bookings-iframe-test/
 
