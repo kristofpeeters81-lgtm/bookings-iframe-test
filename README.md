@@ -1,7 +1,7 @@
 # bookings-iframe-test
 
-Testpagina om te controleren hoe naadloos de Microsoft Bookings-pagina van afspraken@samanthapeeters.be in een website ingesloten kan worden.
+Testpagina om Microsoft Bookings (afspraken@samanthapeeters.be) in een website op te nemen.
 
 Live: https://kristofpeeters81-lgtm.github.io/bookings-iframe-test/
 
-De iframe staat zonder kader over de volle breedte (2000px hoog, 2600px op smalle schermen), met gewone paginatekst ervoor en erna.
+Huidige variant: knop "Online plannen" opent de Bookings-pagina in een pop-up (modal) over de pagina. Op smalle schermen vult de pop-up het hele scherm. Sluiten via ×, Esc of klik naast de pop-up.
