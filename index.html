@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bookings iframe test</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0 auto; max-width: 1000px; padding: 16px; background: #fafafa; color: #222; }
+    h1 { font-size: 1.4rem; }
+    section { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 24px; }
+    h2 { font-size: 1.1rem; margin-top: 0; }
+    code { background: #eee; padding: 2px 4px; border-radius: 4px; word-break: break-all; }
+    iframe { width: 100%; height: 800px; border: 1px dashed #999; border-radius: 4px; }
+    .btn { display: inline-block; padding: 10px 16px; background: #0f6cbd; color: #fff; border-radius: 6px; text-decoration: none; border: 0; font-size: 1rem; cursor: pointer; }
+    .note { font-size: .9rem; color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Microsoft Bookings embed test</h1>
+  <p class="note">Ziet een iframe er leeg/grijs uit of toont hij "geweigerd verbinding te maken", dan blokkeert Microsoft het insluiten (X-Frame-Options / CSP frame-ancestors). Check dan de browserconsole (F12).</p>
+
+  <section>
+    <h2>1. Origineel: link (zoals aangeleverd)</h2>
+    <a class="btn" href="https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/?ismsaljsauthenabled">Online plannen</a>
+  </section>
+
+  <section>
+    <h2>2. iframe — URL met <code>?ismsaljsauthenabled</code></h2>
+    <iframe src="https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/?ismsaljsauthenabled" title="Online plannen (variant 2)" loading="lazy"></iframe>
+  </section>
+
+  <section>
+    <h2>3. iframe — URL zonder query parameter</h2>
+    <iframe src="https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/" title="Online plannen (variant 3)" loading="lazy"></iframe>
+  </section>
+
+  <section>
+    <h2>4. Fallback: openen in popup-venster</h2>
+    <button class="btn" onclick="window.open('https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/?ismsaljsauthenabled','bookings','width=900,height=900')">Online plannen (popup)</button>
+  </section>
+</body>
+</html>
