@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bookings iframe test</title>
   <style>
-    body { font-family: system-ui, sans-serif; margin: 0 auto; max-width: 1000px; padding: 16px; background: #fafafa; color: #222; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #fafafa; color: #222; }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 16px; }
     h1 { font-size: 1.4rem; }
     section { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 24px; }
     h2 { font-size: 1.1rem; margin-top: 0; }
@@ -13,31 +14,38 @@
     .frame-box { height: 800px; border: 1px dashed #999; border-radius: 4px; }
     .btn { display: inline-block; padding: 10px 16px; background: #0f6cbd; color: #fff; border-radius: 6px; text-decoration: none; border: 0; font-size: 1rem; cursor: pointer; }
     .note { font-size: .9rem; color: #555; }
+
+    /* Variant 1: zo naadloos mogelijk — volle breedte, geen kader, ruime hoogte */
+    .seamless { background: #fff; margin: 0 0 24px; }
+    .seamless iframe { display: block; width: 100%; height: 1200px; border: 0; }
+    @media (max-width: 700px) { .seamless iframe { height: 1600px; } }
   </style>
 </head>
 <body>
-  <h1>Microsoft Bookings embed test</h1>
-  <p class="note">Ziet een iframe er leeg/grijs uit of toont hij "geweigerd verbinding te maken", dan blokkeert Microsoft het insluiten (X-Frame-Options / CSP frame-ancestors). Check dan de browserconsole (F12).</p>
+  <div class="wrap">
+    <h1>Microsoft Bookings embed test</h1>
+    <p class="note">Ziet een iframe er leeg/grijs uit of toont hij "geweigerd verbinding te maken", dan blokkeert Microsoft het insluiten (X-Frame-Options / CSP frame-ancestors). Check dan de browserconsole (F12).</p>
+    <h2>1. iframe — zo naadloos mogelijk</h2>
+    <p class="note">Geen kader of rand, volle paginabreedte, witte achtergrond en een ruime vaste hoogte (1200px, 1600px op smalle schermen) zodat er zo weinig mogelijk binnen de iframe gescrold moet worden.</p>
+  </div>
 
-  <section>
-    <h2>1. iframe — exacte code van Microsoft</h2>
-    <p class="note">Code ongewijzigd. Omdat <code>height='100%'</code> de hoogte van de ouder overneemt, staat hij in een container van 800px.</p>
-    <div class="frame-box">
-      <iframe src='https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/?ismsaljsauthenabled' width='100%' height='100%' scrolling='yes' style='border:0'></iframe>
-    </div>
-  </section>
+  <div class="seamless">
+    <iframe src='https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/?ismsaljsauthenabled' title='Online plannen' scrolling='yes'></iframe>
+  </div>
 
-  <section>
-    <h2>2. iframe — zonder <code>?ismsaljsauthenabled</code></h2>
-    <div class="frame-box">
-      <iframe src='https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/' width='100%' height='100%' scrolling='yes' style='border:0'></iframe>
-    </div>
-  </section>
+  <div class="wrap">
+    <section>
+      <h2>2. iframe — zonder <code>?ismsaljsauthenabled</code></h2>
+      <div class="frame-box">
+        <iframe src='https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/' width='100%' height='100%' scrolling='yes' style='border:0'></iframe>
+      </div>
+    </section>
 
-  <section>
-    <h2>3. Fallback: gewone link en popup</h2>
-    <a class="btn" href="https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/?ismsaljsauthenabled" target="_blank" rel="noopener">Online plannen (nieuw tabblad)</a>
-    <button class="btn" onclick="window.open('https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/?ismsaljsauthenabled','bookings','width=900,height=900')">Online plannen (popup)</button>
-  </section>
+    <section>
+      <h2>3. Fallback: gewone link en popup</h2>
+      <a class="btn" href="https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/?ismsaljsauthenabled" target="_blank" rel="noopener">Online plannen (nieuw tabblad)</a>
+      <button class="btn" onclick="window.open('https://bookings.cloud.microsoft/book/afspraken@samanthapeeters.be/?ismsaljsauthenabled','bookings','width=900,height=900')">Online plannen (popup)</button>
+    </section>
+  </div>
 </body>
 </html>

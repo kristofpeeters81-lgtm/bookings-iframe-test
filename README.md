@@ -5,6 +5,6 @@ Testpagina om te controleren of de Microsoft Bookings-pagina van afspraken@saman
 Live: https://kristofpeeters81-lgtm.github.io/bookings-iframe-test/
 
 Varianten op de pagina:
-1. iframe met exacte Microsoft-code
+1. iframe zo naadloos mogelijk (volle breedte, geen kader, ruime hoogte)
 2. iframe zonder `?ismsaljsauthenabled`
 3. Link + popup als fallback
